@@ -1178,7 +1178,7 @@ class Redis(RedisBase):
             info = dict()
             res = res.split('\r\n')
             for l in res:
-                if not l:
+                if not l or l.startswith('#'):
                     continue
                 k, v = l.split(':')
                 info[k] = int(v) if v.isdigit() else v
